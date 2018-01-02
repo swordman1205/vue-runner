@@ -1,0 +1,70 @@
+<div id="site-header-wrapper" class="site-header-wrapper-transparent sticky-header-on-mobile">
+  <header id="site-header" class="site-header">
+    <div class="transparent-header-background">
+      <div class="container">
+        <div class="header-main">
+          <div class="site-title">
+            <div class="site-logo">
+              <router-link :to="{name: 'Landing'}">
+                <span class="logo"><img src="/src/assets/runner_logo.png"/></span>
+              </router-link>
+            </div>
+          </div>
+          <nav class="primary-navigation">
+            <button class="menu-toggle visible-xs" @click="toggleMenu()">
+              Primary Menu
+              <span class="menu-line-1"></span>
+              <span class="menu-line-2"></span>
+              <span class="menu-line-3"></span>
+            </button>
+            <ul class="primary-menu list-unstyled no-responsive hidden-xs">
+              <li class="menu-item" :class="{'menu-item-active': item.active, 'menu-item-parent': item.children}" v-for="item in menu.items">
+                <template v-if="!item.children">
+                  <router-link v-if="insideApp(item.path)" :to="{ name: item.path }">{{item.title}}</router-link>
+                  <a v-else :href="item.path" target="_blank">{{item.title}}</a>
+                </template>
+                <a v-else href="javascript:void(0)">{{item.title}}</a>
+                <ul class="sub-menu list-unstyled" v-if="item.children">
+                  <li class="menu-item" :class="{'menu-item-parent': subItem.children}" v-for="subItem in item.children">
+                    <router-link v-if="!subItem.children" :to="{ name: subItem.path }">{{subItem.title}}</router-link>
+                    <a v-else href="javascript:void(0)">{{subItem.title}}</a>
+                    <ul class="sub-menu list-unstyled" v-if="subItem.children">
+                      <li class="menu-item" v-for="child in subItem.children">
+                        <router-link :to="{ name: child.path }">{{child.title}}</router-link>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li class="menu-item menu-item-search" :class="{active: menu.search.show}" v-if="menu.search.required">
+                <a href="javascript:void(0)" @click="menu.search.show = !menu.search.show"></a>
+                <div class="minisearch invert">
+                  <form id="searchform" @submit="search($event)">
+                    <input class="form-control" type="text" placeholder="Search..." v-model="menu.search.value">
+                    <button type="submit"></button>
+                  </form>
+                </div>
+              </li>
+            </ul>
+            <div class="visible-xs">
+              <ul class="secondary-menu no-responsive list-unstyled" :class="{open: menu.show}">
+                <li class="menu-item back" v-if="path.length > 0"><a href="javascript:void(0)" @click="back()">Back</a></li>
+                <li class="menu-item" :class="{'menu-item-active': item.active, 'menu-item-parent': item.children}" v-for="(item, index) in menu.selectedItems">
+                  <router-link v-if="!item.children" :to="{ name: item.path }">{{item.title}}</router-link>
+                  <a v-else href="javascript:void(0)" @click="selectMobileMenu(index)">{{item.title}}</a>
+                </li>
+                <li class="menu-item menu-item-search" v-if="path.length == 0 && menu.search.required">
+                  <form id="searchform" @submit="search($event)">
+                    <input class="form-control" type="text" placeholder="Search..." v-model="menu.search.value">
+                    <button type="submit"></button>
+                  </form>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- #site-header -->
+</div>

@@ -1,0 +1,75 @@
+<div class="register text-left">
+  <vue-form name="registerForm" :state="formstate" @submit.prevent="register">
+    <validate class="form-group required-field" :class="fieldClassName(formstate.companyName)">
+      <label for="companyName">Company Name</label>
+      <input type="text" name="companyName" class="form-control" id="companyName" v-model.lazy="model.companyName" @change="changeCompanyName()" required>
+      <field-messages name="companyName" show="$touched || $submitted" class="help-block">
+        <div slot="required">Company name is a required field</div>
+      </field-messages>
+    </validate>
+    <validate class="form-group required-field" :class="fieldClassName(formstate.serviceName)">
+      <label for="serviceName">Service Name</label>
+      <input type="text" name="serviceName" class="form-control" id="serviceName" v-model.lazy="model.serviceName" required>
+      <field-messages name="serviceName" show="$touched || $submitted" class="help-block">
+        <div slot="required">Service name is a required field</div>
+      </field-messages>
+    </validate>
+    <validate class="form-group required-field" :class="fieldClassName(formstate.firstName)">
+      <label for="firstName">Contact First Name</label>
+      <input type="text" name="firstName" class="form-control" id="firstName" v-model.lazy="model.firstName" required>
+      <field-messages name="firstName" show="$touched || $submitted" class="help-block">
+        <div slot="required">Contact first name is a required field</div>
+      </field-messages>
+    </validate>
+    <validate class="form-group required-field" :class="fieldClassName(formstate.lastName)">
+      <label for="lastName">Contact Last Name</label>
+      <input type="text" name="lastName" class="form-control" id="lastName" v-model.lazy="model.lastName" required>
+      <field-messages name="lastName" show="$touched || $submitted" class="help-block">
+        <div slot="required">Contact last name is a required field</div>
+      </field-messages>
+    </validate>
+    <validate class="form-group required-field" :class="fieldClassName(formstate.email)">
+      <label for="email">Email</label>
+      <input type="email" name="email" class="form-control" id="email" v-model.lazy="model.email" required>
+      <field-messages name="email" show="$touched || $submitted" class="help-block">
+        <div slot="required">Email is a required field</div>
+        <div slot="email">Email is not valid</div>
+      </field-messages>
+    </validate>
+    <validate class="form-group required-field" :class="fieldClassName(formstate.phone)">
+      <label for="phone">Phone number</label>
+      <input type="text" name="phone" class="form-control" id="phone" v-model.lazy="model.phone" required>
+      <field-messages name="phone" show="$touched || $submitted" class="help-block">
+        <div slot="required">Phone number is a required field</div>
+      </field-messages>
+    </validate>
+    <validate class="form-group required-field" :class="fieldClassName(formstate.username)">
+      <label for="username">Username</label>
+      <input type="text" name="username" class="form-control" id="username" v-model.lazy="model.username" required>
+      <field-messages name="username" show="$touched || $submitted" class="help-block">
+        <div slot="required">Username is a required field</div>
+      </field-messages>
+    </validate>
+    <validate class="form-group required-field" :class="fieldClassName(formstate.password)">
+      <label for="password">Password</label>
+      <input type="password" name="password" class="form-control" id="password" v-model.lazy="model.password" required>
+      <field-messages name="password" show="$touched || $submitted" class="help-block">
+        <div slot="required">Password is a required field</div>
+      </field-messages>
+    </validate>
+    <validate class="form-group required-field" :class="fieldClassName(formstate.confirmPassword)">
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" :matches="model.password" name="confirmPassword" class="form-control" id="confirmPassword" v-model.lazy="model.confirmPassword" required>
+      <field-messages name="confirmPassword" show="$touched || $submitted" class="help-block">
+        <div slot="required">Confirm password is a required field</div>
+        <div slot="matches">Password does not match</div>
+      </field-messages>
+    </validate>
+    <div class="form-group text-center">
+      <button class="btn-runner-primary small" type="submit" :disabled="formstate.$invalid">Register</button>
+    </div>
+    <div class="text-center">
+      <router-link :to="{name: 'Login'}">Already have an account? Please login.</router-link>
+    </div>
+  </vue-form>
+</div>

@@ -1,0 +1,27 @@
+<div class="login text-left">
+  <vue-form name="loginForm" :state="formstate" @submit.prevent="login">
+    <validate class="form-group required-field" :class="fieldClassName(formstate.username)">
+      <label for="username">Username</label>
+      <input type="text" name="username" class="form-control" id="username" v-model.lazy="model.username" required>
+      <field-messages name="username" show="$touched || $submitted" class="help-block">
+        <div slot="required">Username is a required field</div>
+      </field-messages>
+    </validate>
+    <validate class="form-group required-field" :class="fieldClassName(formstate.password)">
+      <label for="password">Password</label>
+      <input type="password" name="password" class="form-control" id="password" v-model.lazy="model.password" required>
+      <field-messages name="password" show="$touched || $submitted" class="help-block">
+        <div slot="required">Password is a required field</div>
+      </field-messages>
+    </validate>
+    <div class="form-group text-center">
+      <button class="btn-runner-primary small" type="submit" :disabled="formstate.$invalid">Login</button>
+    </div>
+    <div class="text-center">
+      <router-link :to="{name: 'Register'}">Register new account</router-link>
+    </div>
+    <div class="text-center">
+      <router-link :to="{name: 'ForgotPassword'}">Forgot your password</router-link>
+    </div>
+  </vue-form>
+</div>

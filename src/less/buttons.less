@@ -1,0 +1,41 @@
+.btn-runner-primary {
+  z-index: 7;
+  white-space: normal;
+  font-size: 19px;
+  line-height: 19px;
+  font-weight: 900;
+  border-radius: 25px;
+  outline: none;
+  box-shadow: rgb(153, 153, 153) 0px 0px 0px 0px;
+  box-sizing: border-box;
+  color: rgb(3, 91, 169);
+  border: 3px solid rgb(3, 91, 169);
+  background: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  visibility: inherit;
+  transition: none;
+  text-align: center;
+  margin: 0px;
+  padding: 13px 40px;
+  letter-spacing: 1px;
+  min-height: 0px;
+  max-height: none;
+  opacity: 1;
+  transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  transform-origin: 50% 50% 0px;
+  text-transform: uppercase;
+  &[disabled] {
+    cursor: not-allowed;
+  }
+  &.small {
+    font-size: 16px;
+    padding: 10px 35px;
+    border-width: 2px;
+    line-height: 16px;
+    font-weight: 700;
+  }
+  &:not([disabled]):hover {
+    background: rgb(3, 91, 169);
+    color: rgb(255, 255, 255);
+  }
+}

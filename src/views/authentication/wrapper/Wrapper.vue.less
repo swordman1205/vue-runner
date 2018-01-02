@@ -1,0 +1,48 @@
+@import '../../../less/mixins';
+@import '../../../less/variables';
+
+.wrapper {
+  background-image: url(../../../assets/Runner-Map-Light-Blue.jpg);
+  min-height: 100vh;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .mask {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000;
+    opacity: 0.1;
+  }
+  .main-panel {
+    background-color: hsla(0,0%,100%,.5);
+    padding: 15px;
+    position: relative;
+    z-index: 1;
+    .inner-content {
+      background-color: #ffffff;
+      padding: 60px 30px;
+      display: flex;
+      flex-direction: column;
+      .logo {
+        img {
+          width: 120px;
+        }
+      }
+      .clean-address-logo {
+        width: 300px;
+        margin: 30px auto;
+        max-width: 100%;
+      }
+      .responsive(@screen-sm-max, {
+        padding: 60px 0;
+      });
+    }
+    .responsive(@screen-sm-max, {
+      width: 100%;
+    });
+  }
+}
