@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import Main from '@/views/main/Main';
 import Landing from '@/views/landing/Landing';
 import Documentation from '@/views/documentation/Documentation';
 import Wrapper from '@/views/authentication/wrapper/Wrapper';
@@ -14,34 +15,41 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Landing',
-      component: Landing,
-    },
-    {
-      path: '/documentation',
-      name: 'Documentation',
-      component: Documentation,
-    },
-    {
-      path: '/auth',
-      name: 'Authentication',
-      component: Wrapper,
-      redirect: 'auth/login',
+      name: 'Main',
+      component: Main,
       children: [
         {
-          path: 'login',
-          name: 'Login',
-          component: Login,
+          path: '',
+          name: 'Landing',
+          component: Landing,
         },
         {
-          path: 'forgot-password',
-          name: 'ForgotPassword',
-          component: ForgotPassword,
+          path: 'documentation',
+          name: 'Documentation',
+          component: Documentation,
         },
         {
-          path: 'register',
-          name: 'Register',
-          component: Register,
+          path: 'auth',
+          name: 'Authentication',
+          component: Wrapper,
+          redirect: 'auth/login',
+          children: [
+            {
+              path: 'login',
+              name: 'Login',
+              component: Login,
+            },
+            {
+              path: 'forgot-password',
+              name: 'ForgotPassword',
+              component: ForgotPassword,
+            },
+            {
+              path: 'register',
+              name: 'Register',
+              component: Register,
+            },
+          ],
         },
       ],
     },

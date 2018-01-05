@@ -126,6 +126,18 @@
                 display: inline-block;
                 vertical-align: middle;
                 padding: 33px 3px;
+                > a.router-link-active {
+                  border: 2px solid #E21E30;
+                  color: #E21E30;
+                  .responsive(@screen-sm-max, {
+                    background: #fff;
+                    border: 0;
+                    border-left: 4px solid #00bcd4;
+                    padding-left: 26px;
+                    color: #3c3950;
+                    text-transform: uppercase;
+                  });
+                }
                 .responsive(@screen-sm-max, {
                   padding: 0;
                 });

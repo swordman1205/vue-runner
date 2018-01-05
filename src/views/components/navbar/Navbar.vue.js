@@ -43,6 +43,14 @@ export default {
   },
   mounted() {
     this.menu.selectedItems = this.menu.items;
+    setTimeout(() => {
+      const $items = document.querySelectorAll('.secondary-menu > .menu-item > .navigate-link');
+      $items.forEach(($item) => {
+        $item.addEventListener('click', e => {
+          this.menu.show = false;
+        });
+      });
+    });
   },
   watch: {
     path(val) {
@@ -81,6 +89,9 @@ export default {
     },
     insideApp(url) {
       return url.indexOf('http') === -1;
+    },
+    navigate() {
+      console.log('======');
     }
   }
 }

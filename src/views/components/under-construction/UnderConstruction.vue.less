@@ -1,0 +1,38 @@
+@import '../../../less/mixins';
+@import '../../../less/variables';
+
+.under-construction {
+  h2 {
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    margin: 50px 0 20px;
+    text-decoration: underline;
+  }
+  h1 {
+    font-size: 50px;
+    letter-spacing: 6px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 600;
+    color: #fd3267;
+    margin-bottom: 50px;
+    margin-top: 0;
+    .responsive(@screen-sm-max, {
+      font-size: 35px;
+    });
+  }
+  p {
+    font-family: 'Open Sans Condensed', sans-serif;
+    letter-spacing: 7px;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    .responsive(@screen-sm-max, {
+      font-size: 12px;
+    });
+  }
+  img {
+    width: 50%;
+    margin-bottom: 50px;
+  }
+}

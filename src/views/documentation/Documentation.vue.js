@@ -1,3 +1,6 @@
+import UnderConstruction from '../components/under-construction/UnderConstruction';
+
 export default {
-  name: 'Documentation'
+  name: 'Documentation',
+  components: { UnderConstruction }
 };
